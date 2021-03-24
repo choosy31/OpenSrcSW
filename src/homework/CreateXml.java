@@ -11,7 +11,10 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
- 
+
+import org.snu.ids.kkma.index.Keyword;
+import org.snu.ids.kkma.index.KeywordExtractor;
+import org.snu.ids.kkma.index.KeywordList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
  
@@ -20,6 +23,7 @@ public class CreateXml{
  
     public static void main (String[] args) {
  
+    	
         try
         {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -38,9 +42,9 @@ public class CreateXml{
             for(int num = 0; num < Num; num++) {
             	Scanner myReader = new Scanner(fileList[num]);
             	String responseBody = myReader.useDelimiter("\\A").next();
-            	 responseBody = responseBody.replace("</p>\r\n            <p>", "");
-                 responseBody = responseBody.replaceAll("            <p>", "");
-                 responseBody = responseBody.replace("</p>\r\n    ", "");
+            	responseBody = responseBody.replace("</p>\r\n            <p>", "");
+                responseBody = responseBody.replaceAll("            <p>", "");
+                responseBody = responseBody.replace("</p>\r\n    ", "");
          
             	Element doc = document.createElement("doc");
                 docs.appendChild(doc);
@@ -55,12 +59,9 @@ public class CreateXml{
                 
                 Element body = document.createElement("body");
                 body.appendChild(document.createTextNode(responseBody.substring(responseBody.indexOf("<div id=\"content\">") + 20,responseBody.indexOf("</div>"))));
-                doc.appendChild(body);
-//              System.out.println(responseBody);  
+                doc.appendChild(body);  
             }
 
- 
-           
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
  
             Transformer transformer = transformerFactory.newTransformer();
