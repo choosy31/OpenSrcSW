@@ -14,12 +14,12 @@ public class kuir {
 //    	Document doc1 = collection.makeDoc();
 //    	doc1 = collection.makeBody(doc1, dirpath1);
 //    	collection.makeXml(doc1, "collection.xml");
+//    	
+//    	makeKeyword keyword = new makeKeyword();
+//    	
+//    	Document doc2 = collection.makeDoc();
+//    	doc2 = keyword.kkma(doc2, dirpath1);
+//    	keyword.makeXml(doc2, "index.xml");
     	
-    	makeKeyword keyword = new makeKeyword();
-    	
-    	Document doc2 = collection.makeDoc();
-    	doc2 = keyword.kkma(doc2, dirpath1);
-    	keyword.makeXml(doc2, "index.xml");
     }
-    
 }
