@@ -1,4 +1,5 @@
-package homeworkweek4;
+package homeworkweek5;
+
 
 import java.io.File;
 
@@ -20,14 +21,18 @@ public class kuir {
 //    	doc2 = keyword.kkma(doc2, dirpath1);
 //    	keyword.makeXml(doc2, "index.xml");
     	
-    	
-    	indexer index = new indexer();
-    	String[][] List = index.List(dirpath1);
-    	float[][] appear = index.summon(List);
-    	float[][] perf = index.returnflo(appear);
-    	index.makeHash(List, perf);
-    	index.makeRead();
+//    	indexer index = new indexer();
+//    	String[][] List = index.List(dirpath1);
+//    	float[][] appear = index.summon(List);
+//    	float[][] perf = index.returnflo(appear);
+//    	index.makeHash(List, perf);
+//    	index.makeRead();
 
+    	
+    	String ques = args[3];
+    	searcher search = new searcher();
+    	search.CalcSim(dirpath1,ques);
+    	
 
     }
 }

@@ -1,4 +1,4 @@
-package homeworkweek4;
+package homeworkweek5;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +27,7 @@ public class indexer {
 	public void makeHash(String[][] splt, float[][] id) {
 		
 		try {
-		FileOutputStream fileStream = new FileOutputStream("src/homeworkweek4/index.post");
+		FileOutputStream fileStream = new FileOutputStream("src/homeworkweek5/index.post");
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
 		
 		int n=0;
@@ -81,7 +81,7 @@ public class indexer {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse("src/homeworkweek4/"+ directory);
+			Document doc = dBuilder.parse("src/homeworkweek5/"+ directory);
 			doc.getDocumentElement().normalize();
 
 			
@@ -179,7 +179,7 @@ public class indexer {
 	} 
 	public void makeRead() {
 		try {
-			FileInputStream fileStream = new FileInputStream("src/homeworkweek4/index.post");
+			FileInputStream fileStream = new FileInputStream("src/homeworkweek5/index.post");
 			ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
 			
 			Object object = objectInputStream.readObject();
