@@ -1,6 +1,5 @@
 package homeworkweek4;
 
-
 import java.io.File;
 
 import org.w3c.dom.Document;
@@ -10,11 +9,11 @@ public class kuir {
     public static void main (String[] args) {
     	String dirpath1 = args[1];
     	
-    	makeCollection collection = new makeCollection();
+//    	makeCollection collection = new makeCollection();
 //    	Document doc1 = collection.makeDoc();
 //    	doc1 = collection.makeBody(doc1, dirpath1);
 //    	collection.makeXml(doc1, "collection.xml");
-    	
+//    	
 //    	makeKeyword keyword = new makeKeyword();
 //    	
 //    	Document doc2 = collection.makeDoc();
@@ -22,11 +21,12 @@ public class kuir {
 //    	keyword.makeXml(doc2, "index.xml");
     	
     	indexer index = new indexer();
-    	String[][] list = index.List(dirpath1);
-    	float[][] appear = index.summon(list);
-    	float[][] perf = index.returnflo(list, appear);
-    	index.makeHash(list, perf);
-//    	index.makeRead();
+    	String[][] List = index.List("index.xml");
+    	float[][] appear = index.summon(List);
+    	float[][] perf = index.returnflo(appear);
+    	index.makeHash(List, perf);
+    	index.makeRead();
+
 
     }
 }

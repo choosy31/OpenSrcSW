@@ -47,6 +47,9 @@ public class searcher {
 					similar[i] += kweight[j]*Float.parseFloat(idweight[j][i*2+1]);
 				}
 			}
+			for(int i=0;i<5;i++) {
+				similar[i] = (float)((double)Math.round(similar[i]*100)/100);
+			}
 			String[] title = new String[5];
 			File path = new File("src/homeworkweek5/collection.xml");
 			Scanner myReader = new Scanner(path);
