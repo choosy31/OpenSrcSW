@@ -29,9 +29,9 @@ public class genSnippet {
 	        document.createTextNode("첨부 봉지면 인기/n");
 	        document.createTextNode("초밥 라면 밥물 채소 소금/n");
 	        document.createTextNode("초밥 종류 활어/n");
-	      
+	        Scanner scan = new Scanner();
+	        scan.
 	  
-	        
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
         	 
              Transformer transformer = transformerFactory.newTransformer();
