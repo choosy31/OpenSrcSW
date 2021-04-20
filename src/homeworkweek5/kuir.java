@@ -22,17 +22,15 @@ public class kuir {
 //    	keyword.makeXml(doc2, "index.xml");
     	
 //    	indexer index = new indexer();
-//    	String[][] List = index.List("index.xml");
-//    	float[][] appear = index.summon(List);
+//    	String[][] list = index.list("index.xml");
+//    	float[][] appear = index.summon(list);
 //    	float[][] perf = index.returnflo(appear);
-//    	index.makeHash(List, perf);
+//    	index.makeHash(list, perf);
 //    	index.makeRead();
 
-    	
     	String ques = args[3];
     	searcher search = new searcher();
     	search.CalcSim(dirpath1,ques);
-    	
-
+    
     }
 }

@@ -29,26 +29,46 @@ public class indexer {
 		try {
 		FileOutputStream fileStream = new FileOutputStream("src/homeworkweek4/index.post");
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileStream);
-		HashMap FoodMap = new HashMap();
-		String[] foo = new String[5];
-		String whole = "";
+		
+		int n=0;
 		for(int i=0;i<5;i++) {
-			String str = "";
+			n += splt[i].length/2;
 			for(int j=0;j<splt[i].length/2;j++) {
-				str = str +splt[i][j*2]+ " ";
+				int m=0;
+				for(int x=1+i;x<5;x++) {
+					for(int y=0;y<splt[x].length/2;y++) {
+						if(splt[i][j*2]==splt[x][y*2]) {
+							m++;
+						}
+					}
+				}
+				for(int k=1; k<5;k++) {
+					if(k*(k+1)/2 == m) {
+						m = k;
+					}
+				}
+				n = n-m;
 			}
-			foo[i] = str;
-			whole = whole + foo[i];	
 		}
-		KeywordExtractor ke = new KeywordExtractor();
-        KeywordList kl = ke.extractKeyword(whole, true);
-        String[] keyword = new String[kl.size()];
-        for(int i=0;i< kl.size();i++) {
-        	Keyword kwrd = kl.get(i);
-        	FoodMap.put(kwrd.getString(), id[i][0]+" "+id[i][1]+" "+id[i][2]+" "+id[i][3]+" "+id[i][4]+" "+id[i][5]+" "+id[i][6]+" "+id[i][7]+" "+id[i][8]+" "+id[i][9]);
+		
+		int z=0;
+		String[] k = new String[n];
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<splt[i].length/2;j++) {
+				String a = splt[i][j*2];
+				if(a.equals(k[i*5+j]) != true) {
+					k[z] = a;
+					z++;
+				}
+			}
+		}
+
+		HashMap FoodMap = new HashMap();
+		
+    	for(int i=0; i<id.length;i++) {
+    		FoodMap.put(k[i], id[i][0]+" "+id[i][1]+" "+id[i][2]+" "+id[i][3]+" "+id[i][4]+" "+id[i][5]+" "+id[i][6]+" "+id[i][7]+" "+id[i][8]+" "+id[i][9]);
+    	}
         	
-        }
-     
 		objectOutputStream.writeObject(FoodMap);
 		objectOutputStream.close();
 		} catch (Exception e) {
@@ -79,6 +99,7 @@ public class indexer {
 				    splt[c] = str[c].split(":");
 				 }
 			}
+			
 			return splt;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -87,48 +108,70 @@ public class indexer {
 		return null;
 	}
 	public float[][] summon(String[][] splt) {
-		String[] foo = new String[5];
-		String whole = "";
+		int n=0;
 		for(int i=0;i<5;i++) {
-			String str = "";
+			n += splt[i].length/2;
 			for(int j=0;j<splt[i].length/2;j++) {
-				str = str +splt[i][j*2]+ " ";
+				int m=0;
+				for(int x=1+i;x<5;x++) {
+					for(int y=0;y<splt[x].length/2;y++) {
+						if(splt[i][j*2]==splt[x][y*2]) {
+							m++;
+						}
+					}
+				}
+				for(int k=1; k<5;k++) {
+					if(k*(k+1)/2 == m) {
+						m = k;
+					}
+				}
+				n = n-m;
 			}
-			foo[i] = str;
-			whole = whole + foo[i];	
 		}
-		KeywordExtractor ke = new KeywordExtractor();
-        KeywordList kl = ke.extractKeyword(whole, true);
-        float[][] decon = new float[kl.size()][10];
-        
-        
-        for(int i=0;i< kl.size();i++) {
-        	Keyword kwrd = kl.get(i);
+		
+		int z=0;
+		String[] k = new String[n];
+		for(int i=0;i<5;i++) {
+			for(int j=0;j<splt[i].length/2;j++) {
+				String a = splt[i][j*2];
+				if(a.equals(k[i*5+j]) != true) {
+					k[z] = a;
+					z++;
+				}
+			}
+		}
+		
+		float[][] decon = new float[n][10];
+        for(int i=0;i<n;i++) {
+        	for(int x=0;x<5;x++) {
+        		for(int y=0;y<splt[x].length/2;y++) {
+        			if(k[i].equals(splt[x][y*2])) {
+        				String a =  splt[x][y*2+1];
+        				decon[i][x*2+1] = Float.parseFloat(a);
+        			}
+        		}
+        	}
         	float num =0;
-        	for(int n=0;n<5;n++) {
-        		if(foo[n].indexOf(kwrd.getString())>-1) {
-            		num++;
-            		decon[i][n*2 + 1] = num;
-            	}
-            	decon[i][n*2] = n;
+        	for(int x=0;x<5;x++) {
+        		for(int y=0;y<splt[x].length/2;y++) {
+        			if(k[i].equals(splt[x][y*2])) {
+                		num++;
+                	}
+        		}
+            	decon[i][x*2] = x;
         	}decon[i][0]= num;
         }
         
 		return decon;
 	}
-	public float[][] returnflo(String[][] splt, float[][] decon){
-		float[] tf = new float[decon.length];
-		for(int i=0;i<5;i++) {
-    		for(int j=0;j<splt[i].length/2;j++) {
-    			tf[i*splt[i].length/2+j] = Float.parseFloat(splt[i][j*2+1]);
-    		}
-    	}
+	public float[][] returnflo(float[][] decon){
+		
 		for(int i=0;i<decon.length;i++) {
 			for(int j=0;j<5;j++) {
 				float a = decon[i][j*2+1];
 				float b = decon[i][0];
-				float calcu = (float) (a * Math.log10(5/b));
-				decon[i][2*j+1] = (float) ((double) Math.round(calcu*10)/10);
+				float calcu =  (float) (a * Math.log(5/b));
+				decon[i][2*j+1] = (float)((double)Math.round(calcu*100)/100);
 			}
 			decon[i][0] = 0;
 		}
@@ -149,7 +192,7 @@ public class indexer {
 			while(it.hasNext()) {
 				String key = it.next();
 				String value = (String) hashMap.get(key);
-				System.out.println(key + ": "+ value);
+				System.out.println(key + ": \t"+ value);
 			}
 			
 			} catch (Exception e) {

@@ -47,6 +47,9 @@ public class searcher {
 					similar[i] += kweight[j]*Float.parseFloat(idweight[j][i*2+1]);
 				}
 			}
+			for(int i=0;i<5;i++) {
+				similar[i] = (float)((double)Math.round(similar[i]*100)/100);
+			}
 			String[] title = new String[5];
 			File path = new File("src/homeworkweek5/collection.xml");
 			Scanner myReader = new Scanner(path);
@@ -74,10 +77,10 @@ public class searcher {
 			for(int i=0;i<3;i++) {
 				System.out.println("유사도 "+ (i+1)+"위 문서 title: "+ title[k[i]]+"("+similar[i]+")");
 			}
-			} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			}
+		} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
 	}
 	
 }
