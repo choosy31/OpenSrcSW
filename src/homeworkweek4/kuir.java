@@ -27,6 +27,5 @@ public class kuir {
     	index.makeHash(list, perf);
     	index.makeRead();
 
-
     }
 }
