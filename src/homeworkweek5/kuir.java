@@ -30,7 +30,7 @@ public class kuir {
 
     	String ques = args[3];
     	searcher search = new searcher();
-    	search.CalcSim(dirpath1,ques);
+    	search.Innerproduct(dirpath1,ques);
     
     }
 }

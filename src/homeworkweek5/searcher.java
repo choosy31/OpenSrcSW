@@ -13,7 +13,7 @@ import org.snu.ids.kkma.index.KeywordList;
 
 public class searcher {
 
-	public void CalcSim(String directory, String str) {
+	public float[] Innerproduct(String directory, String str) {
 		
 		KeywordExtractor ke = new KeywordExtractor();
         KeywordList kl = ke.extractKeyword(str, true);
@@ -77,9 +77,11 @@ public class searcher {
 			for(int i=0;i<3;i++) {
 				System.out.println("유사도 "+ (i+1)+"위 문서 title: "+ title[k[i]]+"("+similar[i]+")");
 			}
+			return similar;
 		} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		return null;
 		}
 	}
 	
