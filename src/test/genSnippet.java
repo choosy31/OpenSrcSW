@@ -24,18 +24,18 @@ public class genSnippet {
 			docBuilder = docFactory.newDocumentBuilder();
 			Document document = docBuilder.newDocument();
 	        document.setXmlStandalone(true);
-	        File path = new File("src/test"+ input);
 	        document.createTextNode("라면 밀가루 달걀 밥 생선/n");
 	        document.createTextNode("라면 물 소금 반죽/n");
 	        document.createTextNode("첨부 봉지면 인기/n");
 	        document.createTextNode("초밥 라면 밥물 채소 소금/n");
 	        document.createTextNode("초밥 종류 활어/n");
+	      
 	  
 	        
 	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
         	 
              Transformer transformer = transformerFactory.newTransformer();
-             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+             
              transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
              transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes");
              
