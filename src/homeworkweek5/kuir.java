@@ -26,11 +26,11 @@ public class kuir {
 //    	float[][] appear = index.summon(list);
 //    	float[][] perf = index.returnflo(appear);
 //    	index.makeHash(list, perf);
-
+//    	index.makeRead();
 
     	String ques = args[3];
     	searcher search = new searcher();
     	search.CalcSim(dirpath1,ques);
-    	
+
     }
 }
