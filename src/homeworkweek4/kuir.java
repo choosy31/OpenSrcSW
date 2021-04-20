@@ -20,6 +20,7 @@ public class kuir {
 //    	doc2 = keyword.kkma(doc2, dirpath1);
 //    	keyword.makeXml(doc2, "index.xml");
     	
+    	
     	indexer index = new indexer();
     	String[][] list = index.List("index.xml");
     	float[][] appear = index.summon(list);

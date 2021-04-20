@@ -13,7 +13,7 @@ import org.snu.ids.kkma.index.KeywordList;
 
 public class searcher {
      public float[] Innerproduct(String directory, String str) {
-		
+	
 		KeywordExtractor ke = new KeywordExtractor();
         KeywordList kl = ke.extractKeyword(str, true);
 		float[] similar = new float[5];
@@ -156,6 +156,5 @@ public class searcher {
 		e.printStackTrace();
 		}
 	}
-	
-	
+
 }
